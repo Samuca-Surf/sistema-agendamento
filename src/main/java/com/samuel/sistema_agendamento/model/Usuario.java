@@ -1,9 +1,8 @@
 package com.samuel.sistema_agendamento.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.*;
 
 @Entity
 public class Usuario {
@@ -11,20 +10,17 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String nome;
+
     private String email;
+
     private Integer telefone;
+
     private String senha;
 
-    public Usuario() {}
 
-    public Usuario(Long id, String nome, String email, Integer telefone, String senha) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.senha = senha;
-    }
+    public Usuario() {}
 
     public Long getId() {
         return id;
@@ -61,17 +57,5 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", telefone=" + telefone +
-                ", senha='" + senha + '\'' +
-                '}';
-    }
-
 
 }
