@@ -17,15 +17,19 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-
-    public Produto cadastrarProduto(Produto produto){
+    //salvar
+    public Produto salvar(Produto produto){
         return produtoRepository.save(produto);
     }
 
-    public void removerProdutoCompletoPorId(Long id){
+    //deletar por id
+    public void deletar(Long id){
+        Produto produto = produtoRepository.findById(id).orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
         produtoRepository.deleteById(id);
     }
 
+    //diminuir quantidade do produto
     public Produto diminuirProdutoQuantidade(Long id, Integer quantidade){
         Produto pro = produtoRepository.findById(id).orElse(null);
 
@@ -41,7 +45,8 @@ public class ProdutoService {
         }
     }
 
-    public List<Produto> listarTodosProduto(){
+    //listarTudo
+    public List<Produto> listar(){
         return produtoRepository.findAll();
     }
 
@@ -55,39 +60,14 @@ public class ProdutoService {
         }
     }
 
-    //modificar nome, referencia = id
-    public Produto modificarNomeProduto(Long id, String novoNome){
-        Produto produto = produtoRepository.findById(id).orElse(null);
-
-        if(produto == null){
-            throw new RuntimeException("ID do produto não encontrado");
-        }else{
-           produto.setNome(novoNome);
-            return produto;
-        }
-
-    }
-
-    //modificar preco, referecia = id
-    public Produto modificarPrecoProduto(Long id, Double novoPreco){
-        Produto produto = produtoRepository.findById(id).orElse(null);
-        if (produto == null){
-            throw new RuntimeException("ID do produto não encontrado");
-        }
-        produto.setPreco(novoPreco);
-        return produto;
-    }
-
-    //aumentar quantidade, referencia = id
-    public Produto aumentarProdutoQuantidade(Long id, Integer quantidade){
-        Produto produto = produtoRepository.findById(id).orElse(null);
-        if (produto==null){
-            throw new RuntimeException("ID de produto não encontrado");
+    public List<Produto> listarPorNome(String nome){
+        List<Produto> produtos = produtoRepository.findByNomeContainingIgnoreCase(nome);
+        if (produtos.isEmpty()){
+            throw new RuntimeException("Produto nao encontrado com este nome");
         }else {
-            produto.setQuantidade(produto.getQuantidade() + quantidade);
-            return produto;
+            return produtos;
         }
-
     }
+
 
 }

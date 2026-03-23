@@ -3,7 +3,8 @@ package com.samuel.sistema_agendamento.estoque.repository;
 import com.samuel.sistema_agendamento.estoque.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+import java.util.List;
 
-    Produto removeProdutoById(Long id);
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+    List<Produto> findByNomeContainingIgnoreCase(String nome);
 }
