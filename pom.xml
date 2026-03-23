@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.samuel</groupId>
 	<artifactId>sistema-agendamento</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>sistema-agendamento</name>
 	<description>a tamplate project</description>
 	<url/>
