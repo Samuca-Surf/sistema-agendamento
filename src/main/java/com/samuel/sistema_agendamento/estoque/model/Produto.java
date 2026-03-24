@@ -22,12 +22,15 @@ public class Produto {
     private String nome;
 
     @NotNull(message = "O de preco nao pode ser vazio")
-    @Positive(message = "O valor deve ser positivo")
+    @Positive(message = "O valor deve ser positivo e maior que 0")
     private Double preco;
 
     @NotNull(message = "A quantidade nao pode ser vazio")
     @PositiveOrZero(message = "O valor deve ser positivo ou 0")
     private Integer quantidade;
+
+    @Positive(message = "O valor deve ser maior que 0")
+    private Integer minAlerta;
 
     public Produto() {
     }
