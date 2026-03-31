@@ -22,8 +22,13 @@ public class Agendamento {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    private LocalDateTime data_horario;
+    private LocalDateTime dataHora;
+
     private Status status;
+
+    @ManyToOne
+    @JoinColumn(name = "horario_disponivel_id")
+    private HorariosDisponiveis horariosDisponiveis;
 
     public Agendamento() {}
 
